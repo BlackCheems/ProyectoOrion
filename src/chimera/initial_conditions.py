@@ -66,7 +66,7 @@ def generate_chimera_scenario(n_galaxies, box_size_mpc, seed):
         
         # Velocidad Peculiar (Movimiento propio, caída hacia el nido)
         # Las galaxias en cúmulos se mueven rápido (~500 km/s)
-        v_peculiar = np.random.randn(3) * 500 
+        v_peculiar = np.random.randn(3) * 100
         
         total_vel = v_hubble + v_peculiar
         velocities.append(total_vel)
