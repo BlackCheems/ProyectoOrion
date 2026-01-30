@@ -17,9 +17,9 @@ ti.init(arch=ti.gpu)
 INPUT_FILE = "data/processed/simulation_input.npy"
 OUTPUT_FILE = "data/processed/trajectory_taichi.npy"
 G_REAL = 4.30091e-3  # pc (km/s)^2 / Msun
-DT = 0.1             # Paso de tiempo (Millones de años)
-STEPS = 500          # Cuántos pasos simulamos (Total 500 * 0.1 = 50 Myr para prueba rápida)
-SOFTENING = 100.0    # Parsecs (para evitar que la fuerza sea infinita si chocan)
+DT = 0.5             # Paso de tiempo (Millones de años)
+STEPS = 2000         # Cuántos pasos simulamos (Total 500 * 0.1 = 50 Myr para prueba rápida)
+SOFTENING = 10.0    # Parsecs (para evitar que la fuerza sea infinita si chocan)
 
 def run_taichi_simulation():
     print("--- INICIANDO MOTOR GPU (TAICHI CUDA) ---")

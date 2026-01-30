@@ -32,7 +32,7 @@ def generate_chimera_scenario(n_galaxies, box_size_mpc, seed):
     mean_mass = 1e10 
     sigma_mass = 0.5  # Dispersión
     masses = np.random.lognormal(mean=np.log(mean_mass), sigma=sigma_mass, size=n_galaxies)
-    
+    masses[0] = 1e13
     # 2. Generar Posiciones "Clustered" (No aleatorias puras)
     # Las galaxias nacen en nidos. Creamos 3 "nidos" principales.
     box_size_pc = box_size_mpc * 1e6
@@ -46,6 +46,13 @@ def generate_chimera_scenario(n_galaxies, box_size_mpc, seed):
     Hz_per_pc = Hz / 1e6 # Convertir a km/s / pc
     
     for i in range(n_galaxies):
+
+        if i == 0:
+            # EL REY: En el centro exacto, quieto.
+            pos = np.array([box_size_pc/2, box_size_pc/2, box_size_pc/2])
+            positions.append(pos)
+            velocities.append(np.array([0.0, 0.0, 0.0])) # Velocidad cero
+            continue # Saltar al siguiente
         # Elegir un nido aleatorio
         cluster_idx = np.random.randint(0, n_clusters)
         center = cluster_centers[cluster_idx]
